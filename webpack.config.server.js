@@ -8,10 +8,11 @@ module.exports = {
         'webpack/hot/poll?1000',
         './src/server/index'
     ],
-    watch: true,
+    devtool: 'source-map',
+    watch: false,
     target: 'node',
     externals: [nodeExternals({
-        whitelist: ['webpack/hot/poll?1000']
+        allowlist: ['webpack/hot/poll?1000']
     })],
     module: {
         rules: [{
@@ -21,8 +22,6 @@ module.exports = {
         }]
     },
     plugins: [
-        new StartServerPlugin('server.js'),
-        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
@@ -34,5 +33,6 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'prod/server'),
         filename: 'server.js'
-    }
+    },
+    mode: 'development'
 }

@@ -7,9 +7,10 @@ module.exports = {
     path: path.join(__dirname, "prod/dapp"),
     filename: "bundle.js"
   },
+  devtool: 'source-map',
   module: {
     rules: [
-    {
+      {
         test: /\.(js|jsx)$/,
         use: "babel-loader",
         exclude: /node_modules/
@@ -20,9 +21,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        type: 'asset'
       },
       {
         test: /\.html$/,
@@ -32,16 +31,35 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ 
+    new HtmlWebpackPlugin({
       template: path.join(__dirname, "src/dapp/index.html")
     })
   ],
   resolve: {
-    extensions: [".js"]
+    extensions: [".js"],
+    fallback: {
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+      "crypto": false,
+      "buffer": false,
+      "assert": false,
+      "os": false,
+      "url": false
+    }
   },
   devServer: {
-    contentBase: path.join(__dirname, "dapp"),
     port: 8000,
-    stats: "minimal"
+    devMiddleware: {
+      stats: "minimal"
+    },
+    static: {
+      directory: path.join(__dirname, "dapp")
+    }
   }
 };
