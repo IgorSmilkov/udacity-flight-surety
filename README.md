@@ -39,6 +39,8 @@ To build dapp for prod:
 
 Deploy the contents of the ./dapp folder
 
+## Application
+![flight-surety](images/flight-surety.png)
 
 ## Resources
 
