@@ -11,22 +11,76 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">FlightSurety</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">FlightSurety</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault"
             aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
 
-    <main class="container">
+<main class="container">
 
-        <div id="display-wrapper" class="top-20">
+    <div class="form">
+        <h2>Administration</h2>
+
+        <h4 class="margin-top">Authorize caller</h4>
+        <label class="form">Address</label> <input type="text" id="authorize-airline-address">
+
+        <button class="btn btn-primary" id="authorize-button">Authorize</button>
+    </div>
+
+    <div class="form">
+        <h2>Airlines</h2>
+
+        <h4 class="margin-top">Fund Airline</h4>
+        <label class="form">Address</label> <input type="text" id="fund-airline-address">
+        <label class="form">Amount (ETH)</label> <input type="text" id="fund-airline-amount" value=10>
+        <button class="btn btn-primary" id="fund-button">Fund</button>
+
+        <h4 class="margin-top">Register Airline</h4>
+        <label class="form">Address</label> <input type="text" id="register-airline-address">
+
+        <button class="btn btn-primary" id="register-airline-button">Register</button>
+    </div>
+
+    <div class="form">
+        <h2>Flights</h2>
+
+        <h4 class="margin-top">Register Flight</h4>
+        <div class="display-grid margin-top">
+            <label>Address</label> <input type="text" id="flight-airline-address">
+            <label>Number</label> <input type="text" id="flight-number">
+            <label>Flight Status</label> <input type="text" id="flight-status" readonly>
+
+            <button class="btn btn-primary grid-button" id="register-flight-button">Register</button>
+            <button class="btn btn-primary grid-button" id="get-current-status-button">Get Current Flight Status</button>
+            <button class="btn btn-primary grid-button" id="request-flight-status-button">Request Flight Status</button>
         </div>
-        <div class="row top-20">
-            <label class="form">Flight</label> <input type="text" id="flight-number"> <btn class="btn btn-primary" id="submit-oracle">Submit to Oracles</btn>
+    </div>
+
+    <div class="form">
+        <h2>Buy Insurance</h2>
+
+        <div class="display-grid margin-top">
+            <label>Address</label> <input type="text" id="insurance-airline-address">
+            <label>Flight</label> <input type="text" id="insurance-flight-number">
+            <label>Amount (ETH)</label> <input type="text" id="insurance-amount">
+
+            <button class="btn btn-primary grid-button" id="insurance-button">Buy Insurance</button>
         </div>
-    </main>
+    </div>
+
+    <div class="form">
+        <h2>Pay Insurance</h2>
+
+        <label class="form margin-top">Address</label> <input type="text" id="late-airline-address">
+        <label class="form">Flight</label> <input type="text" id="late-flight-number">
+
+        <button class="btn btn-primary" id="get-paid-button">Get Paid</button>
+    </div>
+</main>
 
 </body>
 

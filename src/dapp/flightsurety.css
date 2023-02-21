@@ -6,11 +6,17 @@ body {
 
 .container {
     margin-top: 400px;
+    display: grid;
+    row-gap: 20px;
+}
+
+.form {
     background-color: #000;
     opacity: 0.9;
     color: #fff;
-    padding: 40px;
+    padding: 30px;
 }
+
 
 .top-20 {
     margin-top: 20px;
@@ -40,3 +46,20 @@ label.form {
 input {
     margin-right: 30px;
 }
+
+
+.display-grid{
+    display: grid;
+    grid-template-columns: 250px 350px;
+    grid-gap: 15px;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.grid-button {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+

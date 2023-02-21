@@ -59,12 +59,12 @@ contract FlightSuretyData {
     * @dev Modifier that requires the "ContractOwner" account to be the function caller
     */
     modifier requireContractOwner() {
-        require(msg.sender == contractOwner, "Caller is not contract owner");
+        require(tx.origin == contractOwner, "Caller is not contract owner");
         _;
     }
 
     modifier requireIsAuthorized() {
-        require(authorizedCallers[msg.sender]==true, "Caller is not authorized");
+        require(authorizedCallers[tx.origin]==true, "Caller is not authorized");
         _;
     }
 
@@ -195,7 +195,7 @@ contract FlightSuretyData {
     *
     */
     fallback() external payable {
-        fund(msg.sender);
+        fund(tx.origin);
     }
 
 

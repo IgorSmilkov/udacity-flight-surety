@@ -11,7 +11,7 @@
     "test": "truffle test ./test/flightSurety.js",
     "dapp": "webpack serve --mode development --config webpack.config.dapp.js",
     "dapp:prod": "webpack --mode production  --config webpack.config.dapp.js",
-    "server": "rmdir /s /q prod && webpack --config webpack.config.server.js && node prod\\server\\server.js"
+    "server": "webpack --config webpack.config.server.js"
   },
   "author": "Nik Kalyani <nik@kalyani.com> https://www.kalyani.com",
   "devDependencies": {

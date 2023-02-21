@@ -107,7 +107,7 @@ contract('Flight Surety Tests', async (accounts) => {
    it('Funded registered airline can register new airline', async () => {
 // ARRANGE
       let newAirline = accounts[2];
-
+      await config.flightSuretyApp.authorizeCaller(config.firstAirline, {from: accounts[0]});
       // ACT
       await config.flightSuretyApp.fund(config.firstAirline, {from: config.firstAirline, value:  Web3.utils.toWei('10', 'ether')})
       await config.flightSuretyApp.registerAirline(newAirline, {from: config.firstAirline});
@@ -119,6 +119,11 @@ contract('Flight Surety Tests', async (accounts) => {
    });
 
    it('If more that 4 airlines are registered, consensus of 50% is needed for registering new airline', async () => {
+      await config.flightSuretyApp.authorizeCaller(accounts[2], {from: accounts[0]});
+      await config.flightSuretyApp.authorizeCaller(accounts[3], {from: accounts[0]});
+      await config.flightSuretyApp.authorizeCaller(accounts[4], {from: accounts[0]});
+      await config.flightSuretyApp.authorizeCaller(accounts[5], {from: accounts[0]});
+
       assert.equal(1, await config.flightSuretyData.getFundedAirlinesCount(), "Number of registered and funded airlines are not 1");
       await config.flightSuretyApp.fund(accounts[2], {from: accounts[2], value:  Web3.utils.toWei('10', 'ether')})
       assert.equal(2, await config.flightSuretyData.getFundedAirlinesCount(), "Number of registered and funded airlines are not 2");
